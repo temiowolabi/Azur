@@ -175,3 +175,94 @@ li{
   }
 
 /*Reg Form End*/
+
+
+/*Home Page - Vids*/
+
+.home-container{
+width: 80%;
+margin: 80px auto;
+}
+
+.home-container h1{
+padding: 60px 0;
+color: #5161ce;
+font-size 44px;
+text-align:center;
+text-transform: uppercase;
+}
+
+.row{
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+}
+
+.col{
+flex-basis: 50%;
+min-width: 250px
+}
+
+.feature-img{
+width: 83%;
+margin: auto;
+position: relative;
+border-radius: 6px;
+overflow: hidden;
+}
+
+.small-img-row{
+display: flex;
+background: black;
+margin: 20px 0;
+align-items: center;
+border-radius: 6px;
+overflow: hidden;
+width: 25em;
+height: 25em;
+}
+
+.small-img img{
+position: relative;
+width: 150px;
+}
+
+.small-img-row p{
+margin-left: 20px;
+color: orange;
+}
+
+.play{
+width: 60px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+cursor: pointer;
+}
+
+.small-img .play{
+width: 35px;
+}
+
+.video-player{
+width: 80%;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+display: none;
+}
+
+video:focus:{
+outline: none;
+}
+
+.close{
+position: absolute;
+top: 10px;
+right: 10px;
+width: 30px;
+cursor: pointer;
+}
+/*Home Page - Vids*/

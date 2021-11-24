@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+<body>
+    <div class="home-container">
+        <h1>View Your Videos...</h1>
+        <div class="row">
+            <div class="col">
+                <div class="feature-img">
+                    <img src="../static/images/temp1.jpg">
+                    <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid1.mp4')">
+                </div>
+            </div>
+            <div class="col">
+                <h4>View Older Videos</h4>
+                <div class="small-img-row">
+                    <div class="small-img">
+                        <img src="../static/images/temp2.jpg">
+                        <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid2.mp4')">
+                    </div>
+                    <p>Date: 20/05/2001</p>
+                </div>
+
+                                <div class="small-img-row">
+                    <div class="small-img">
+                        <img src="../static/images/temp3.jpg">
+                        <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid3.mp4')">
+                    </div>
+                    <p>Date: 20/05/2001</p>
+                </div>
+
+                                <div class="small-img-row">
+                    <div class="small-img">
+                        <img src="../static/images/temp4.jpg">
+                        <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid4.mp4')">
+                    </div>
+                    <p>Date: 20/05/2001</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<div class="video-player" id="videoPlayer">
+    <video width="100%" controls autoplay id="myVideo">
+        <source src="../static/videos/vid1.mp4"type="video/mp4">
+    </video>
+    <img src="../static/images/close.png" class="close"
+    onClick = "stopVideo()">
+</div>
+
+<script>
+    var videoPlayer = document.getElementById("videoPlayer");
+    var myVideo = document.getElementById("myVideo");
+
+    function stopVideo(){
+    videoPlayer.style.display = "none";
+    }
+
+    function playVideo(file){
+    myVideo.src = file;
+    videoPlayer.style.display = "block";
+    }
+</script>
+</body>
+</html>
