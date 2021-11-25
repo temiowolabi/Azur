@@ -11,66 +11,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 </head>
 <body>
-    <div class="home-container">
-        <h1>View Your Videos...</h1>
-        <div class="row">
-            <div class="col">
-                <div class="feature-img">
-                    <img src="../static/images/temp1.jpg">
-                    <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid1.mp4')">
-                </div>
-            </div>
-            <div class="col">
-                <h4>View Older Videos</h4>
-                <div class="small-img-row">
-                    <div class="small-img">
-                        <img src="../static/images/temp2.jpg">
-                        <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid2.mp4')">
-                    </div>
-                    <p>Date: 20/05/2001</p>
-                </div>
+<div class="vidContainer">
+<div class="video-gallery">
+    <div class="grid-row">
+ <input type="radio" value="1" name="video-list" id="video-1" checked="checked" /><label for="video-1">Option 1</label>
+ <input type="radio" value="2" name="video-list" id="video-2" /><label for="video-2">Option 2</label>
+ <input type="radio" value="3" name="video-list" id="video-3" /><label for="video-3">Option 3</label>
+ <input type="radio" value="4" name="video-list" id="video-4" /><label for="video-4">Option 4</label>
+ <!-- videos -->
+ <div class="video video-1">
+  <iframe width="560" height="315" src="../static/videos/vid1.mp4" frameborder="0" allowfullscreen></iframe>
+ </div>
 
-                                <div class="small-img-row">
-                    <div class="small-img">
-                        <img src="../static/images/temp3.jpg">
-                        <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid3.mp4')">
-                    </div>
-                    <p>Date: 20/05/2001</p>
-                </div>
+ <div class="video video-2">
+  <iframe width="560" height="315" src="../static/videos/vid2.mp4" frameborder="0" allowfullscreen></iframe>
+ </div>
 
-                                <div class="small-img-row">
-                    <div class="small-img">
-                        <img src="../static/images/temp4.jpg">
-                        <img src="../static/images/play.png" class="play" onClick="playVideo('../static/videos/vid4.mp4')">
-                    </div>
-                    <p>Date: 20/05/2001</p>
-                </div>
-            </div>
+ <div class="video video-3">
+  <iframe width="560" height="315" src="../static/videos/vid3.mp4" frameborder="0" allowfullscreen></iframe>
+ </div>
 
-        </div>
-    </div>
+ <div class="video video-4">
+  <iframe width="560" height="315" src="../static/videos/vid4.mp4" frameborder="0" allowfullscreen></iframe>
+ </div>
 
-
-<div class="video-player" id="videoPlayer">
-    <video width="100%" controls autoplay id="myVideo">
-        <source src="../static/videos/vid1.mp4"type="video/mp4">
-    </video>
-    <img src="../static/images/close.png" class="close"
-    onClick = "stopVideo()">
+ <!-- videos -->
 </div>
-
-<script>
-    var videoPlayer = document.getElementById("videoPlayer");
-    var myVideo = document.getElementById("myVideo");
-
-    function stopVideo(){
-    videoPlayer.style.display = "none";
-    }
-
-    function playVideo(file){
-    myVideo.src = file;
-    videoPlayer.style.display = "block";
-    }
-</script>
+</div>
+    </div>
 </body>
 </html>
