@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="alphaNav">
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="home.html"> <img src="../static/images/logo.png" alt=""></a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="home.html">Dashboard</a></li>
+                    <li><a href="#">Devices</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <li><a href="#">Control Center</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
+        </div>
+</header>
+
+
+
+<div class="alphaAccountContainer">
+<div class="accountContainer">
+  <div class="leftBox">
+    <nav>
+      <a onclick="tabs(0)" class="tab active">
+        <i class="fa fa-user"></i>
+      </a>
+              <a onclick="tabs(1)" class="tab">
+        <i class="fas fa-lock"></i>
+      </a>
+              <a onclick="tabs(2)" class="tab">
+        <i class="fas fa-cogs"></i>
+      </a>
+    </nav>
+  </div>
+    <div class="rightBox">
+        <div class="profile tabShow">
+        <h1>Personal Information</h1>
+            <h2>Full Name</h2>
+            <input type="text" class="input" value="Ben Smith">
+            <h2>Email</h2>
+            <input type="email" class="input" value="bensmith@dkit.ie">
+            <h2>Phone Number</h2>
+            <input type="text" class="input" value="0871234567">
+            <h2>Password</h2>
+            <input type="password" class="input" value="password">
+            <button class="btn">Update</button>
+            </div>
+
+        <div class="privacy tabShow">
+        <h1>Privacy Settings</h1>
+            <h2>Manage Email Subscription</h2>
+            <p></p>
+            <h2>Manage Privacy Settings</h2>
+            <p></p>
+            <h2><a href="help.html">View Terms of Use</a></h2>
+            <p></p>
+            <button class="btn">Update</button>
+            </div>
+
+        <div class="settings tabShow">
+        <h1>Account Settings</h1>
+            <h2>Settings 1</h2>
+            <p></p>
+            <h2>Settings 2</h2>
+            <p></p>
+            <h2>Settings 3</h2>
+            <p></p>
+            <button class="btn">Update</button>
+            </div>
+        </div>
+</div>
+</div>
+
+
+
+<script src="jquery/jquery.js"></script>
+<script>
+    const tabBtn = document.querySelectorAll(".tab");
+    const tab = document.querySelectorAll(".tabShow");
+
+    function tabs(panelIndex){
+        tab.forEach(function(node) {
+            node.style.display = "none";
+        });
+        tab[panelIndex].style.display = "block";
+        }
+        tabs(0);
+</script>
+<script>
+    $(".tab").click(function()
+        $(this).addClass("active").siblings().removeClass("active");
+     })
+</script>
+</body>
+</html>

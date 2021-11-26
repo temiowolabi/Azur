@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&display=swap');
 /*Navbar Start*/
-header {
+.alphaNav {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,31 +19,29 @@ header {
     text-align: center;
 }
 
-.nav div.logo {
+.nav div.nav-logo img{
     float: left;
-    width: auto;
-    height: auto;
+    width: 15rem;
     padding-left: 3rem;
 }
 
-.nav div.logo a {
+.nav div.nav-logo a {
     text-decoration: none;
-    color: #fff;
-    font-size: 2.5rem;
+    color: #5161ce;
 }
 
-.nav div.logo a:hover {
-    color: #00E676;
+.nav div.nav-logo a:hover {
+    color: purple;
 }
 
 .nav div.main_list {
     height: 65px;
-    float: right;
+    margin-left:50em;
 }
 
 .nav div.main_list ul {
     width: 100%;
-    height: 65px;
+    height: 35px;
     display: flex;
     list-style: none;
     margin: 0;
@@ -58,12 +57,13 @@ header {
 
 .nav div.main_list ul li a {
     text-decoration: none;
+    color: #5161ce;
     line-height: 65px;
     font-size: 2.4rem;
 }
 
 .nav div.main_list ul li a:hover {
-    color: #00E676;
+    color: purple;
 }
 
 .navTrigger {
@@ -77,10 +77,112 @@ header {
     transition: all 0.4s ease;
 }
 
+
+/* Media qurey section */
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .container {
+    .nav-container {
         margin: 0;
     }
+}
+
+@media screen and (max-width:768px) {
+    .navTrigger {
+        display: block;
+    }
+    .nav div.nav-logo {
+        margin-left: 15px;
+    }
+    .nav div.main_list {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+    .nav div.show_list {
+        height: auto;
+        display: none;
+    }
+    .nav div.main_list ul {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #111;
+        /*same background color of navbar*/
+        background-position: center top;
+    }
+    .nav div.main_list ul li {
+        width: 100%;
+        text-align: right;
+    }
+    .nav div.main_list ul li a {
+        text-align: center;
+        width: 100%;
+        font-size: 3rem;
+        padding: 20px;
+    }
+    .nav div.media_button {
+        display: block;
+    }
+}
+
+.navTrigger {
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    margin: auto;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+}
+
+.navTrigger i {
+    background-color: #fff;
+    border-radius: 2px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+}
+
+.navTrigger i:nth-child(1) {
+    -webkit-animation: outT 0.8s backwards;
+    animation: outT 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(2) {
+    margin: 5px 0;
+    -webkit-animation: outM 0.8s backwards;
+    animation: outM 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(3) {
+    -webkit-animation: outBtm 0.8s backwards;
+    animation: outBtm 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger.active i:nth-child(1) {
+    -webkit-animation: inT 0.8s forwards;
+    animation: inT 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(2) {
+    -webkit-animation: inM 0.8s forwards;
+    animation: inM 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(3) {
+    -webkit-animation: inBtm 0.8s forwards;
+    animation: inBtm 0.8s forwards;
 }
 /*Navbar End*/
 
@@ -564,3 +666,115 @@ li{
   }
 }
 /*Home Page - Vids*/
+
+
+/*Account Page Start*/
+.alphaAccountContainer{
+overflow: hidden;
+}
+
+.accountContainer{
+background: #fff;
+width: 540px;
+height: 450px;
+margin: 0 auto;
+position: relative;
+margin-top: 10%;
+box-shadow: 2px 5px 20px rgba(119, 119,
+119,.5);
+}
+
+.leftBox{
+float: left;
+top: -5%;
+left: 5%;
+position: absolute;
+width: 15%;
+height: 110%;
+background: #5161ce;
+box-shadow: 3px 3px 10px rgba(119,119,119,.5);
+border: .1em solid #fff;
+}
+
+.leftBox nav a{
+list-style: none;
+padding: 35px;
+color: #fff;
+font-size: 1.1em;
+display: block;
+transition: all .3s ease-in-out;
+}
+
+.leftBox nav a:hover{
+color: purple;
+cursor: pointer;
+transform: scale(1.2);
+}
+
+.leftBox nav a:first-child{
+margin-top: 7px;
+}
+
+.leftBox nav a.active{
+color:purple;
+}
+
+.rightBox{
+width: 60%;
+margin-left: 27%;
+padding-top: 5px;
+}
+
+.tabShow{
+transition: all .5s ease-in;
+width: 80%;
+}
+
+.rightBox h1{
+font-family: 'Montserrat', sans-serif;
+color: #5161ce;
+font-size: 2.2rem;
+margin-top: 40px;
+margin-bottom: 35px;
+}
+
+.rightBox h2{
+color: #777;
+font-family: 'Montserrat', sans-serif;
+text-transform: uppercase;
+font-size:8px;
+letter-spacing: 1px;
+margin-left: 2px;
+margin-top: 10px;
+}
+
+.rightBox input, p{
+border: 0;
+border-bottom: 1px solid #5161ce;
+width: 80%;
+font-family: 'Montserrat', sans-serif;
+font-size: .7em;
+padding: 7px 0;
+color: #070707;
+outline: none;
+}
+
+.btn{
+font-family: 'Roboto', sans-serif;
+text-transform: uppercase;
+font-size: 15px;
+border: 0;
+color: #fff;
+background: #5161ce;
+padding: 7px 15px;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .2);
+cursor: pointer;
+margin-top: 15px;
+}
+
+.tabShow{
+display: none;
+}
+
+
+/*Account Page End*/
