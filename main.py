@@ -31,7 +31,7 @@ def index():
             else:
                return redirect(url_for('index'))
 
-    return render_template("login.html")
+    return render_template("index.html")
 
 
 @app.route('/new', method=['GET', 'POST'])
@@ -45,7 +45,7 @@ def new_user():
             cur.execute("INSERT INTO azurcam.users(username, email, password)VALUES(%s, %s, %s)",(username, email, password))
             db.connection.comit()
             return redirect(url_for('index'))
-    return render_template("register.html")
+    return render_template("registeration.html")
 @app.route('/new/profile')
 def profile():
     if session['loginsuccess'] == True:
