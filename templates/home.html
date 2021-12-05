@@ -1,41 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-</head>
+{% extends "layout.html" %}
+{% block body %}
 <body>
-<header>
-    <div class="alphaNav">
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="home.html"> <img src="../static/images/logo.png" alt=""></a>
-            </div>
-            <div id="mainListDiv" class="main_list">
-                <ul class="navlinks">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Devices</a></li>
-                    <li><a href="account.html">Account</a></li>
-                    <li><a href="#">Control Center</a></li>
-                    <li><a href="help.html">Help</a></li>
-                </ul>
-            </div>
-            <span class="navTrigger">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
-        </div>
-    </nav>
-        </div>
-</header>
 
 
 <div class="vidContainerAlpha">
@@ -68,5 +33,6 @@
 </div>
     </div>
 </div>
+
 </body>
-</html>
+{% endblock %}

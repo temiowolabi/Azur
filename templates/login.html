@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body style="background-color: blue;">
+{% extends "layout.html" %}
+{% block body %}
+<body>
 <div>
-    <form action="" method="post">
+    <form action="/" method="post">
         <label>USERNAME</label><br>
         <input name="username" type="email" placeholder="please enter your username"><br><br>
         <label>PASSWORD</label><br>
@@ -21,17 +17,4 @@
     </form>
 </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</html>
+{% endblock %}
