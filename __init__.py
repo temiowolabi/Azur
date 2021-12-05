@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-from flask_mysqldb import MySQL
-import MySQLdb
+from flask_mysqldb import MySQL, MySQLdb
 
 app = Flask(__name__)
 app.secret_key = "123456"
@@ -34,7 +33,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/new', method=['GET', 'POST'])
+@app.route('/new', methods=['GET', 'POST'])
 def new_user():
     if request.method == "POST":
         if "one" in request.form and "two" in request.form and "three" in request.form:
@@ -45,7 +44,7 @@ def new_user():
             cur.execute("INSERT INTO azurcam.users(username, email, password)VALUES(%s, %s, %s)",(username, email, password))
             db.connection.comit()
             return redirect(url_for('index'))
-    return render_template("registeration.html")
+    return render_template("registration.html")
 @app.route('/new/profile')
 def profile():
     if session['loginsuccess'] == True:
@@ -55,8 +54,8 @@ def profile():
 def logout():
     session.pop('loginsuccess',None)
     return redirect(url_for('index'))
-if __name__ == '__main__':
-    app.run(debug=True)
+#if __name__ == '__main__':
+#    app.run(debug=True)
 
 
 # @app.route('/new')
