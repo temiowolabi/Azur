@@ -61,7 +61,6 @@ def profile():
 
 @app.route('/home')
 def home():
-    print("A")
     #  if session['loginsuccess'] == True:
     return render_template("home.html")
 
