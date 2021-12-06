@@ -1,5 +1,15 @@
-{% extends "layout.html" %}
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
 <body>
 <div class="wrapper">
   <div class="container">
@@ -9,15 +19,15 @@
               <div class="logo">
         <img src="../static/images/logo.png" alt="">
       </div>
-      <input type="text" name="" id="email" placeholder="Email">
-        <input type="text" name="" id="name" placeholder="Full Name">
-        <input type="text" name="" id="username" placeholder="Username">
-      <input type="password" name="" id="password1" placeholder="Password">
-        <input type="password" name="" id="password12" placeholder="Confrim Password">
+        <input type="text" name="name" id="name" placeholder="Full Name">
+        <input type="text" name="username" id="username" placeholder="Username">
+      <input type="text" name="email" id="email" placeholder="Email">
+      <input type="password" name="password" id="password" placeholder="Password">
+        <input type="password" name="" id="password2" placeholder="Confirm Password">
       <button class="form-btn">Register</button>
     </form>
     <div class="sign-up">
-        Have an account? <a href="/">Log in</a>
+      Have an account? <a href="/">Log in</a>
     </div>
     </div>
   </div>
@@ -35,4 +45,4 @@
   <!-- reg form *end* -->
 
 </body>
-{% endblock %}
+</html>
