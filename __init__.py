@@ -1,6 +1,8 @@
+from functools import wraps
+
 import flask
 import flask_mysqldb
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from flask_mysqldb import MySQL, MySQLdb
 
 app = Flask(__name__)
@@ -60,14 +62,24 @@ def registration():
             return redirect(url_for('index'))
     return render_template("registration.html")
 
+def LoginRequired(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if "logged_in" in session:
+            if session['logged_in']:
+                return f(*args, **kwargs)
+            flash("Please login first")
+            return redirect(url_for("login"))
+    return wrapper
 
-@app.route('/new/profile')
-def profile():
-    #  if session['loginsuccess'] == True:
-    return render_template("profile.html")
+# @app.route('/new/profile')
+# def profile():
+#     #  if session['loginsuccess'] == True:
+#     return render_template("profile.html")
 
 
 @app.route('/home')
+@LoginRequired
 def home():
     return render_template("home.html")
 
