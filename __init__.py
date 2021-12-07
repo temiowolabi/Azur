@@ -8,7 +8,7 @@ app.secret_key = "AzurCam123"
 # yX6dCdPZF9ggdQ2kHPGA
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = ""
+app.config["MYSQL_PASSWORD"] = "yX6dCdPZF9ggdQ2kHPGA"
 app.config["MYSQL_DB"] = "azurcam"
 
 db = MySQL(app)
