@@ -39,9 +39,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/account")
-def account():
-    return render_template("account.html")
+
 
 
 @app.route('/new', methods=['GET', 'POST'])
@@ -79,12 +77,17 @@ def LoginRequired(f):
 
 
 @app.route('/home')
-@LoginRequired
+# @LoginRequired
 def home():
     return render_template("home.html")
 
+@app.route("/account")
+# @LoginRequired
+def account():
+    return render_template("account.html")
 
 @app.route('/help')
+# @LoginRequired
 def helper():
     return render_template('help.html')
 
