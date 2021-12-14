@@ -17,6 +17,7 @@
     position: fixed;
     line-height: 65px;
     text-align: center;
+    padding: 50px;
 }
 
 .nav div.nav-logo img{
@@ -920,12 +921,27 @@ display: none;
 /*Account Page End*/
 
 /*Help Section Start*/
+
+.helpImage {
+    background: url("../images/help.jpg");
+    background-size: 72rem;
+    background-repeat: no-repeat;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    height: 52rem;
+    padding-top:500px;
+    margin-bottom: -50px;
+}
+
 .helpContainer{
     margin-left: 40em;
     padding-top: 200px;
 
 }
 .box{
+   margin-top: 200px;
+   margin-bottom: 200px;
    width: 520px;
    background: #fff;
    border-radius: 7px;
