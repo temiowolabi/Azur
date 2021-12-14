@@ -1,38 +1,40 @@
 {% extends "layout.html" %}
 {% block body %}
 <body>
-
-
 <div class="vidContainerAlpha">
-<div class="vidContainer">
-<div class="video-gallery">
-    <div class="grid-row">
- <input type="radio" value="1" name="video-list" id="video-1" checked="checked" /><label for="video-1">Option 1</label>
- <input type="radio" value="2" name="video-list" id="video-2" /><label for="video-2">Option 2</label>
- <input type="radio" value="3" name="video-list" id="video-3" /><label for="video-3">Option 3</label>
- <input type="radio" value="4" name="video-list" id="video-4" /><label for="video-4">Option 4</label>
- <!-- videos -->
- <div class="video video-1">
-  <iframe width="560" height="315" src="../static/videos/vid1.mp4" frameborder="0" allowfullscreen></iframe>
- </div>
+    <div class="vidContainer">
+        <div class="video-gallery">
+            <div class="grid-row">
+                <input type="radio" value="1" name="video-list" id="video-1" checked="checked"/><label for="video-1">Option
+                1</label>
+                <input type="radio" value="2" name="video-list" id="video-2"/><label for="video-2">Option 2</label>
+                <input type="radio" value="3" name="video-list" id="video-3"/><label for="video-3">Option 3</label>
+                <input type="radio" value="4" name="video-list" id="video-4"/><label for="video-4">Option 4</label>
+                <!-- videos -->
+                <div class="video video-1">
+                    <iframe width="560" height="315" src="../static/videos/vid1.mp4" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
 
- <div class="video video-2">
-  <iframe width="560" height="315" src="../static/videos/vid2.mp4" frameborder="0" allowfullscreen></iframe>
- </div>
+                <div class="video video-2">
+                    <iframe width="560" height="315" src="../static/videos/vid2.mp4" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
 
- <div class="video video-3">
-  <iframe width="560" height="315" src="../static/videos/vid3.mp4" frameborder="0" allowfullscreen></iframe>
- </div>
+                <div class="video video-3">
+                    <iframe width="560" height="315" src="../static/videos/vid3.mp4" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
 
- <div class="video video-4">
-  <iframe width="560" height="315" src="../static/videos/vid4.mp4" frameborder="0" allowfullscreen></iframe>
- </div>
+                <div class="video video-4">
+                    <iframe width="560" height="315" src="../static/videos/vid4.mp4" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
 
- <!-- videos -->
-</div>
-</div>
+                <!-- videos -->
+            </div>
+        </div>
     </div>
 </div>
-
 </body>
 {% endblock %}
