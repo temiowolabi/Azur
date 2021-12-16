@@ -21,6 +21,9 @@ app.config["MYSQL_DB"] = "azurcam"
 db = MySQL(app)
 
 
+alive = 0
+data = {}
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     session['loginsuccess'] = False
