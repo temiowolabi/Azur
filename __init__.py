@@ -124,10 +124,12 @@ def logout():
 """
 RECIEVING DETECTED MOTION FROM PUBNUB
 """
-
-
-
-
+class MySubscribeCallback(SubscribeCallback):
+    def message(self, pubnub, message):
+        messageArray = message.__dict__
+        print(messageArray['message']['sender'])
+        cursor = db.connection.cursor()
+        cursor.execute("INSERT INTO azurcam.users(name, username, email, password)")
 
 
 pubnub.add_listener(MySubscribeCallback())
