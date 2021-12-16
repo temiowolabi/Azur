@@ -21,11 +21,11 @@
             <div class="profile tabShow">
                 <h1>Personal Information</h1>
                 <h2>Full Name</h2>
-                <input type="text" class="input" value="Ben Smith">
+                <input type="text" class="input" value="{{session['name']}}">
+                <h2>Username</h2>
+                <input type="text" class="input" value="{{session['username']}}">
                 <h2>Email</h2>
-                <input type="email" class="input" value="bensmith@dkit.ie">
-                <h2>Phone Number</h2>
-                <input type="text" class="input" value="0871234567">
+                <input type="email" class="input" value="{{session['email']}}">
                 <h2>Password</h2>
                 <input type="password" class="input" value="password">
                 <button class="btn">Update</button>
@@ -37,7 +37,7 @@
                 <p></p>
                 <h2>Manage Privacy Settings</h2>
                 <p></p>
-                <h2><a href="help.html">View Terms of Use</a></h2>
+                <h2><a href="/help">View Terms of Use</a></h2>
                 <p></p>
                 <button class="btn">Update</button>
             </div>
