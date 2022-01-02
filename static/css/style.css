@@ -834,3 +834,29 @@ details summary{
 }
 
 /*Help Section End*/
+
+.setupHeading{
+   background: #5161ce;
+   width:100%;
+   border-radius: 7px 7px 0px 0px;
+   padding: 10px;
+   color: #fff;
+   text-align: center;
+   font-family: "Rubik";
+   font-size: 2.3em;
+}
+
+  .setupBtn {
+    background-color: #5161ce;
+    border: none;
+    color: white;
+    margin: 1rem 0 1.5rem;
+    height: 3rem;
+    border-radius: 0.4rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  .box .setupInput{
+    border:none;
+  }

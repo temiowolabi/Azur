@@ -1,14 +1,10 @@
-import flask
-import flask_mysqldb
-import pubnub
-import uuid
+import bcrypt
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_mysqldb import MySQL, MySQLdb
-
+from mysql.connector import connect, Error
 from pubnub.callbacks import SubscribeCallback
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.pubnub import PubNub
-from pprint import pprint
 
 app = Flask(__name__)
 app.secret_key = "AzurCam123"
@@ -26,12 +22,9 @@ pnconfig.subscribe_key = "sub-c-60d39bd0-5cfb-11ec-96e9-32997ff5e1b9"
 pnconfig.publish_key = "pub-c-0586af82-d21f-4eb0-a261-9b0ec1e03ba0"
 
 pubnub = PubNub(pnconfig)
-
-
-
-
 alive = 0
 data = {}
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -40,17 +33,21 @@ def index():
         if 'email' in request.form and 'password' in request.form:
             email = request.form['email']
             password = request.form['password']
-
             cursor = db.connection.cursor(MySQLdb.cursors.DictCursor)
-            cursor.execute("SELECT * FROM users WHERE email=%s AND password =%s", (email, password))
+            sql = "SELECT * FROM users WHERE email= '%s'" % email
+            print(sql)
+            cursor.execute(sql)
             info = cursor.fetchone()
 
             if info is not None:
-                if info['email'] == email and info['password'] == password:
-                    #save variables
+                hashed = info['password']
+                print(hashed)
+                if info['email'] == email and bcrypt.checkpw(password.encode('utf-8'), hashed.encode('utf-8')):
+                    # save variables
                     session['loginsuccess'] = True
                     session['user_id'] = info['user_id']
                     session['name'] = info['name']
+                    session['password'] = info['password']
                     session['username'] = info['username']
                     session['email'] = info['email']
                     session['iot_id'] = info['iot_id']
@@ -62,9 +59,23 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/account")
+@app.route("/account", methods=['GET', 'POST'])
 def account():
     if session['loginsuccess']:
+        print("a")
+        if request.method == "POST":
+
+            if "name" in request.form and "username" in request.form and "email" in request.form and "password" in request.form:
+                name = request.form['name']
+                username = request.form['username']
+                username2 = session['username']
+                email = request.form['email']
+
+                cursor = db.connection.cursor(MySQLdb.cursors.DictCursor)
+                cursor.execute("UPDATE azurcam.users SET name = %s, username = %s, email = %s WHERE "
+                               "username = %s", (name, username, email, username2))
+                db.connection.commit()
+                return redirect(url_for('index'))
         return render_template("account.html")
     else:
         (print("Not Signed In"))
@@ -80,9 +91,10 @@ def registration():
             email = request.form['email']
             password = request.form['password']
 
+            hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             cursor = db.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.execute("INSERT INTO azurcam.users(name, username, email, password)VALUES(%s, %s, %s, %s)",
-                           (name, username, email, password))
+                           (name, username, email, hashed))
 
             db.connection.commit()
             return redirect(url_for('index'))
@@ -94,7 +106,8 @@ def home():
     if session['loginsuccess']:
         iot_id = session['iot_id']
         cursor = db.connection.cursor(MySQLdb.cursors.DictCursor)
-        sql = "SELECT * FROM images WHERE image_reference LIKE '%s%%' " % iot_id
+        sql = "SELECT * FROM images WHERE image_reference LIKE '%s-%%' " % iot_id
+        print(sql)
         cursor.execute(sql)
         info = cursor.fetchall()
         array = []
@@ -121,15 +134,51 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.route('/setup', methods=['GET', 'POST'])
+def setup():
+    if session['loginsuccess']:
+        if request.method == 'POST':
+            if 'iot_id' in request.form:
+                username = session['username']
+                iot_id = request.form['iot_id']
+
+                cursor = db.connection.cursor(MySQLdb.cursors.DictCursor)
+                sql = "UPDATE users SET iot_id = '%s' WHERE username = '%s'" % (iot_id, username)
+                cursor.execute(sql)
+                db.connection.commit()
+                session['iot_id'] = iot_id
+            return redirect(url_for('home'))
+        else:
+            return render_template('setup.html')
+    # salt
+    else:
+        (print("Not Signed In"))
+        return render_template("index.html")
+
+
 """
 RECIEVING DETECTED MOTION FROM PUBNUB
 """
+
+
 class MySubscribeCallback(SubscribeCallback):
     def message(self, pubnub, message):
         messageArray = message.__dict__
-        print(messageArray['message']['sender'])
-        cursor = db.connection.cursor()
-        cursor.execute("INSERT INTO azurcam.users(name, username, email, password)")
+        image_reference = messageArray['message']['image-reference']
+        update_query = "INSERT INTO images (image_reference) VALUES ('%s')" % image_reference
+        print(update_query)
+        try:
+            with connect(
+                    host="localhost",
+                    user="root",
+                    password="",
+                    database="azurcam"
+            ) as connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(update_query)
+                    connection.commit()
+        except Error as e:
+            print(e)
 
 
 pubnub.add_listener(MySubscribeCallback())
@@ -138,4 +187,4 @@ pubnub.subscribe().channels("azurcam-channel").with_presence() \
     .execute()
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)
